@@ -1,194 +1,112 @@
 <template>
-  <v-app dark>
-    <!-- <Header /> -->
+  <v-app>
+    <AppHeaderMobile v-if="mobile" />
+    <AppHeader v-else />
 
-    <HeaderMobile v-if="$vuetify.breakpoint.mdAndDown"></HeaderMobile>
-    <Header2 v-else />
     <v-main class="pt-0">
-      <nuxt />
-      <div
-        class="bairline_logo"
-        :class="{
-          'bairline_logo--nav':
-            !$vuetify.breakpoint.mdAndDown && $route.path != '/',
-          'bairline_logo--nav--mobile':
-            $vuetify.breakpoint.mdAndDown && $route.path != '/'
-        }"
-      >
-        <nuxt-link
-          to="/"
-          aria-label="Bairline"
-        >
-          <BairlineLogo ref="logo" />
-        </nuxt-link>
-      </div>
+      <slot />
     </v-main>
-    <Footer />
+
+    <div
+      ref="logoWrapperEl"
+      class="bairline-logo"
+      :class="{
+        'bairline-logo--home': route.path === '/',
+        'bairline-logo--nav': !mobile && route.path !== '/',
+        'bairline-logo--nav--mobile': mobile && route.path !== '/',
+      }"
+    >
+      <NuxtLink to="/" aria-label="Bairline">
+        <BairlineLogo />
+      </NuxtLink>
+    </div>
+
+    <AppFooter />
   </v-app>
 </template>
 
-<script>
-import AOS from "aos";
-import "aos/dist/aos.css";
+<script setup lang="ts">
+import { useDisplay } from 'vuetify'
 
-export default {
-  data() {
-    return {
-      showLogoInNavbar: true,
-      runner: "",
-    };
-  },
-  watch: {
-    "$route.path": {
-      handler(to, from) {
-        this.showLogoInNavbar = true;
-        if (to !== "/") {
-          clearTimeout(this.runner);
-          this.runner = setTimeout(() => {
-            this.showLogoInNavbar = false;
-          }, 3000);
-        }
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
-  mounted() {
-    setTimeout(() => {
-      AOS.init({
-        duration: 1000,
-      });
-    }, 1000);
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  updated() {
-    setTimeout(() => {
-      AOS.init({
-        duration: 1000,
-      });
-    }, 1000);
-  },
-  methods: {
-    handleScroll() {
-      const maxBackgroundSize = window.innerHeight / 2;
+const route = useRoute()
+const { mdAndDown: mobile } = useDisplay()
+const logoWrapperEl = ref<HTMLElement | null>(null)
 
-      let scrollY = window.scrollY;
-      let scaleValue = 1 / (scrollY / maxBackgroundSize + 1);
+function handleScroll() {
+  if (!logoWrapperEl.value || route.path !== '/') return
+  const scrollY = Math.max(0, window.scrollY)
+  const vh = window.innerHeight
+  const progress = Math.min(scrollY / vh, 1)
 
-      if (scaleValue < 0.5) {
-        scaleValue = 0.5;
-      }
+  const scaleValue = 1 - progress * 0.55
+  const finalMoveUp = progress * vh * 0.3
+  const extraScroll = scrollY > vh ? scrollY - vh : 0
+  const moveUp = finalMoveUp + extraScroll
 
-      if (scrollY / window.innerHeight > 1) {
-        scrollY = window.innerHeight;
-      }
-
-      // zoom the background at a slower rate
-      this.$refs.logo.$el.style.transform =
-        "translateY(" + scrollY / 1.5 + "px) scale(" + scaleValue + ") ";
-    },
-    sanitizeTitleName(title) {
-      title = title.split("/").pop();
-      title = title.replace(/-([a-z])/g, function (g) {
-        return " " + g[1].toUpperCase();
-      });
-      title = title.charAt(0).toUpperCase() + title.slice(1);
-      return decodeURI(title);
-    },
-  },
-  head() {
-    return {
-      titleTemplate:
-        this.$route.path !== "/"
-          ? `${this.sanitizeTitleName(this.$route.fullPath)} | %s`
-          : "%s",
-    };
-  },
-};
-</script>
-<style lang="scss">
-html {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-.theme--dark.v-application {
-  background: linear-gradient(90deg, #485563 10%, #29323c 90%) !important;
-}
-
-.clickable {
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.02);
+  if (scrollY <= 0) {
+    logoWrapperEl.value.style.transform = `translate(-50%, -50%)`
+  } else {
+    logoWrapperEl.value.style.transform = `translate(-50%, calc(-50% - ${moveUp}px)) scale(${scaleValue})`
   }
 }
 
-.bairline_logo {
-  position: absolute;
-  width: 100%;
-  top: 50vh;
-  padding: 0 10%;
-  transform: translateY(-100%);
-  cursor: default;
-  transition: all 1.5s linear 0s;
-  animation: intoForeground 2s;
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+
+useHead({
+  titleTemplate: (title) => {
+    if (route.path === '/') return 'Bairline Fluggesellschaft'
+    return title ? `${title} | Bairline Fluggesellschaft` : 'Bairline Fluggesellschaft'
+  },
+})
+</script>
+
+<style lang="scss">
+.bairline-logo {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+
+  &--home {
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    max-width: 2000px;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+  }
 
   &--nav {
-    cursor: pointer;
+    top: 12px;
+    left: 16px;
     width: 280px;
-    top: 54px;
-    padding: 0;
-    margin-left: 16px;
+    transform: none;
+    pointer-events: auto;
     z-index: -1;
     animation: intoBackground 3s;
   }
+
   &--nav--mobile {
-    cursor: pointer;
+    top: 10px;
+    right: 16px;
+    left: auto;
     width: 20%;
-    top: 39px;
-    padding: 0;
-    right: 0;
+    transform: none;
+    pointer-events: auto;
     z-index: -1;
     animation: intoBackgroundMobile 3s;
   }
 }
-@keyframes intoForeground {
-  0% {
-    z-index: 20;
-  }
-  100% {
-    z-index: 20;
-  }
-}
+
 @keyframes intoBackground {
-  0% {
-    z-index: 20;
-  }
-  99% {
-    z-index: 20;
-  }
-  100% {
-    z-index: -1;
-  }
+  0% { z-index: 100; }
+  99% { z-index: 100; }
+  100% { z-index: -1; }
 }
+
 @keyframes intoBackgroundMobile {
-  0% {
-    z-index: 20;
-  }
-  99% {
-    z-index: 20;
-  }
-  100% {
-    opacity: 0;
-    z-index: -1;
-  }
+  0% { z-index: 100; }
+  99% { z-index: 100; }
+  100% { opacity: 0; z-index: -1; }
 }
 </style>

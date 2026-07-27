@@ -1,30 +1,21 @@
 <template>
   <div>
-    <Hero :src="src" :scrollTarget="'#services'" @ended="animationEnd()">
+    <HeroVideo src="/videos/city.mp4" scroll-target="#services">
       Private <br />
       Jet <br />
       Charter
-    </Hero>
+    </HeroVideo>
     <v-container>
       <v-row align="center" justify="center" class="text-center" id="services">
         <v-col cols="12">
           <h1 class="text-h2 my-8">Private Air Travel Services</h1>
         </v-col>
       </v-row>
-      <v-row
-        align="center"
-        class="text-center"
-        justify="center"
-        :class="{ 'flex-row-reverse': toggle }"
-      >
+      <v-row align="center" class="text-center" justify="center">
         <v-col cols="12" md="6">
-          <v-img :src="imageSource" height="500" class="ma-8"></v-img>
+          <v-img src="/images/business.jpg" height="500" class="ma-8" />
         </v-col>
-        <v-col
-          cols="12"
-          md="6"
-          class="d-flex flex-column align-self-stretch justify-space-around pa-8"
-        >
+        <v-col cols="12" md="6" class="d-flex flex-column align-self-stretch justify-space-around pa-8">
           <div class="text-body-1 text-justify">
             The limousine goes directly from the office to the General Aviation
             Terminal. Within 10 minutes you are on the plane, which will take
@@ -37,8 +28,7 @@
             the airport and you will start your well-deserved journey home to
             spend the evening at home with your family.
           </div>
-
-          <div class="text-body-1 text-justify">
+          <div class="text-body-1 text-justify mt-4">
             Take advantage of the various benefits of a private jet for your
             business travels. Arrive at your destination on time, in comfort and
             without traffic jams. Let us chauffeur you in the air and use the
@@ -52,11 +42,10 @@
           </div>
         </v-col>
       </v-row>
-
       <v-row align="center" class="text-center">
         <v-col cols="12">
-          <v-btn x-large light to="/contact" nuxt>
-            Plan your {{ toggle ? "travel" : "trip" }}
+          <v-btn size="x-large" color="white" variant="flat" to="/contact">
+            Plan your trip
           </v-btn>
         </v-col>
       </v-row>
@@ -69,17 +58,14 @@
             tailored private flight solution.
           </p>
         </v-col>
-        <v-divider vertical></v-divider>
+        <v-divider vertical />
         <v-col cols="12" md="4">
           <h2 class="text-h4 text-center">Our Services:</h2>
           <div class="py-2">
             <ul>
               <li>pet friendly</li>
               <li>competitive pricing</li>
-              <li>
-                Minimal lead time on domestic flights
-                <small>(international flights subject to permits)</small>
-              </li>
+              <li>Minimal lead time on domestic flights <small>(international flights subject to permits)</small></li>
               <li>24/7/365 services/customer support</li>
             </ul>
           </div>
@@ -89,48 +75,6 @@
   </div>
 </template>
 
-<script>
-import Vue from "vue";
-export default Vue.extend({
-  data() {
-    return {
-      toggle: false,
-      src: require("~/assets/videos/city.mp4"),
-    };
-  },
-  destroyed() {
-    this.$vuetify.theme.dark = true;
-  },
-  methods: {
-    animationEnd(e) {
-      // this.toggle = !this.toggle;
-      // if (this.toggle) {
-      //   this.src = require("~/assets/videos/beach.mp4");
-      // } else {
-      //   this.src = require("~/assets/videos/city.mp4");
-      // }
-    },
-  },
-  watch: {
-    // toggle: {
-    //   handler(to, from) {
-    //     if (to) {
-    //       this.src = require("~/assets/videos/beach.mp4");
-    //       this.$store.dispatch("images/toggleOffer", true);
-    //     } else {
-    //       this.src = require("~/assets/videos/city.mp4");
-    //       this.$store.dispatch("images/toggleOffer", false);
-    //     }
-    //   },
-    //   immediate: true,
-    // },
-  },
-  computed: {
-    imageSource() {
-      return this.toggle
-        ? require("~/assets/images/holiday.jpg")
-        : require("~/assets/images/business.jpg");
-    },
-  },
-});
+<script setup lang="ts">
+useHead({ title: 'Charter' })
 </script>

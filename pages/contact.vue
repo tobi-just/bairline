@@ -1,10 +1,7 @@
 <template>
-  <Contact />
+  <ContactSection />
 </template>
 
-<script>
-export default {};
+<script setup lang="ts">
+useHead({ title: 'Contact' })
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped></style>

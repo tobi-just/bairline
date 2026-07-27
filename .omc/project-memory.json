@@ -1,0 +1,427 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1785175256141,
+  "projectRoot": "/Users/JUSTTOB/Projects/private/bairline",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": "18.x",
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "nuxt",
+        "version": "2.18.1",
+        "category": "fullstack"
+      },
+      {
+        "name": "jest",
+        "version": "26.6.3",
+        "category": "testing"
+      }
+    ],
+    "packageManager": "yarn",
+    "runtime": "Node.js 18.x"
+  },
+  "build": {
+    "buildCommand": "yarn build",
+    "testCommand": "rm -f yarn.lock package.json vercel.json jest.config.js .babelrc",
+    "lintCommand": null,
+    "devCommand": "yarn dev",
+    "scripts": {
+      "dev": "nuxt",
+      "build": "nuxt build",
+      "start": "nuxt start",
+      "generate": "nuxt generate",
+      "test": "jest"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "assets",
+      "components",
+      "pages",
+      "static",
+      "test"
+    ],
+    "gitBranches": {
+      "defaultBranch": "development",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 4,
+      "lastAccessed": 1785175256117,
+      "keyFiles": [
+        "README.md",
+        "planes.js",
+        "variables.scss"
+      ]
+    },
+    "components": {
+      "path": "components",
+      "purpose": "UI components",
+      "fileCount": 13,
+      "lastAccessed": 1785175256117,
+      "keyFiles": [
+        "BairlineLogo.vue",
+        "Contact.vue",
+        "Fleet.vue",
+        "Footer.vue",
+        "Header2.vue"
+      ]
+    },
+    "layouts": {
+      "path": "layouts",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1785175256119,
+      "keyFiles": [
+        "README.md",
+        "default.vue",
+        "error.vue"
+      ]
+    },
+    "middleware": {
+      "path": "middleware",
+      "purpose": "Middleware",
+      "fileCount": 1,
+      "lastAccessed": 1785175256119,
+      "keyFiles": [
+        "README.md"
+      ]
+    },
+    "pages": {
+      "path": "pages",
+      "purpose": "Page components",
+      "fileCount": 7,
+      "lastAccessed": 1785175256120,
+      "keyFiles": [
+        "README.md",
+        "aircraft.vue",
+        "catering.vue",
+        "contact.vue",
+        "index.vue"
+      ]
+    },
+    "plugins": {
+      "path": "plugins",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1785175256120,
+      "keyFiles": [
+        "README.md",
+        "aos.js",
+        "responsive-video.js"
+      ]
+    },
+    "static": {
+      "path": "static",
+      "purpose": "Static files",
+      "fileCount": 1,
+      "lastAccessed": 1785175256120,
+      "keyFiles": [
+        "bairline_favicon.ico"
+      ]
+    },
+    "store": {
+      "path": "store",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1785175256120,
+      "keyFiles": [
+        "README.md",
+        "images.js"
+      ]
+    },
+    "test": {
+      "path": "test",
+      "purpose": "Test files",
+      "fileCount": 1,
+      "lastAccessed": 1785175256120,
+      "keyFiles": [
+        "Logo.spec.js"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "layouts/default.vue",
+      "accessCount": 26,
+      "lastAccessed": 1785181693571,
+      "type": "file"
+    },
+    {
+      "path": "components/FleetSection.vue",
+      "accessCount": 18,
+      "lastAccessed": 1785184761160,
+      "type": "file"
+    },
+    {
+      "path": "pages/gallery.vue",
+      "accessCount": 18,
+      "lastAccessed": 1785184769741,
+      "type": "file"
+    },
+    {
+      "path": "components/AppHeader.vue",
+      "accessCount": 10,
+      "lastAccessed": 1785185216075,
+      "type": "file"
+    },
+    {
+      "path": "pages/index.vue",
+      "accessCount": 8,
+      "lastAccessed": 1785185011713,
+      "type": "file"
+    },
+    {
+      "path": "components/PromisesSection.vue",
+      "accessCount": 7,
+      "lastAccessed": 1785183409852,
+      "type": "file"
+    },
+    {
+      "path": "assets/scss/main.scss",
+      "accessCount": 6,
+      "lastAccessed": 1785185134711,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 4,
+      "lastAccessed": 1785179005353,
+      "type": "file"
+    },
+    {
+      "path": "pages/team.vue",
+      "accessCount": 4,
+      "lastAccessed": 1785184765462,
+      "type": "file"
+    },
+    {
+      "path": "composables/usePlanes.ts",
+      "accessCount": 4,
+      "lastAccessed": 1785186190970,
+      "type": "file"
+    },
+    {
+      "path": "pages/aircraft.vue",
+      "accessCount": 3,
+      "lastAccessed": 1785178898137,
+      "type": "file"
+    },
+    {
+      "path": "pages/contact.vue",
+      "accessCount": 3,
+      "lastAccessed": 1785178898558,
+      "type": "file"
+    },
+    {
+      "path": "pages/offer.vue",
+      "accessCount": 3,
+      "lastAccessed": 1785178945477,
+      "type": "file"
+    },
+    {
+      "path": "components/AppHeaderMobile.vue",
+      "accessCount": 3,
+      "lastAccessed": 1785180029535,
+      "type": "file"
+    },
+    {
+      "path": "nuxt.config.js",
+      "accessCount": 2,
+      "lastAccessed": 1785178296390,
+      "type": "file"
+    },
+    {
+      "path": "assets/planes.js",
+      "accessCount": 2,
+      "lastAccessed": 1785178296486,
+      "type": "file"
+    },
+    {
+      "path": "pages/plane/_id.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178302050,
+      "type": "file"
+    },
+    {
+      "path": "components/Fleet.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178307220,
+      "type": "file"
+    },
+    {
+      "path": "components/Contact.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178307267,
+      "type": "file"
+    },
+    {
+      "path": "components/Promises.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178307287,
+      "type": "file"
+    },
+    {
+      "path": "components/Intro.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178307299,
+      "type": "file"
+    },
+    {
+      "path": "components/Header2.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178312985,
+      "type": "file"
+    },
+    {
+      "path": "components/Hero.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178318180,
+      "type": "file"
+    },
+    {
+      "path": "components/Footer.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178318257,
+      "type": "file"
+    },
+    {
+      "path": "store/images.js",
+      "accessCount": 2,
+      "lastAccessed": 1785178331477,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 2,
+      "lastAccessed": 1785178614445,
+      "type": "file"
+    },
+    {
+      "path": "components/BairlineLogo.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785178777656,
+      "type": "file"
+    },
+    {
+      "path": "vercel.json",
+      "accessCount": 2,
+      "lastAccessed": 1785179237843,
+      "type": "file"
+    },
+    {
+      "path": "plugins/vuetify.ts",
+      "accessCount": 2,
+      "lastAccessed": 1785181770431,
+      "type": "file"
+    },
+    {
+      "path": "components/ContactSection.vue",
+      "accessCount": 2,
+      "lastAccessed": 1785184773909,
+      "type": "file"
+    },
+    {
+      "path": "pages/gallery/index.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785175345105,
+      "type": "file"
+    },
+    {
+      "path": "plugins/responsive-video.js",
+      "accessCount": 1,
+      "lastAccessed": 1785175348129,
+      "type": "file"
+    },
+    {
+      "path": "plugins/aos.js",
+      "accessCount": 1,
+      "lastAccessed": 1785175348165,
+      "type": "file"
+    },
+    {
+      "path": "assets/variables.scss",
+      "accessCount": 1,
+      "lastAccessed": 1785175358521,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1785175361118,
+      "type": "file"
+    },
+    {
+      "path": "components/HeaderMobile.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178318311,
+      "type": "file"
+    },
+    {
+      "path": "nuxt.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1785178613947,
+      "type": "file"
+    },
+    {
+      "path": "app.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178629890,
+      "type": "file"
+    },
+    {
+      "path": "components/AppFooter.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178805692,
+      "type": "file"
+    },
+    {
+      "path": "components/IntroSection.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178852882,
+      "type": "file"
+    },
+    {
+      "path": "components/HeroVideo.vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178879807,
+      "type": "file"
+    },
+    {
+      "path": "pages/plane/[id].vue",
+      "accessCount": 1,
+      "lastAccessed": 1785178980229,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
