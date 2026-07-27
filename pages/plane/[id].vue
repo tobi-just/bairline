@@ -164,8 +164,8 @@
       </v-row>
     </v-container>
 
-    <v-container fluid class="gallery-section">
-      <v-row align="center" justify="center" v-if="plane.gallery.length">
+    <v-container fluid class="gallery-section" v-if="plane.gallery.length">
+      <v-row align="center" justify="center">
         <v-col cols="12" md="9">
           <v-carousel cycle hide-delimiters show-arrows="hover">
             <v-carousel-item
@@ -179,26 +179,29 @@
           </v-carousel>
         </v-col>
       </v-row>
-      <v-dialog v-model="galleryDialog" max-width="900">
-        <v-carousel hide-delimiters show-arrows v-model="galleryIndex">
-          <v-carousel-item
-            v-for="(item, i) in plane.gallery"
-            :key="i"
-            :src="item"
-            cover
-          />
-        </v-carousel>
-        <v-btn
-          icon
-          variant="flat"
-          color="white"
-          style="position: absolute; top: 8px; right: 8px;"
-          @click="galleryDialog = false"
-        >
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-      </v-dialog>
     </v-container>
+
+    <v-dialog v-model="galleryDialog" max-width="900" scrim="#212121" class="plane-gallery-dialog">
+      <v-carousel hide-delimiters show-arrows v-model="galleryIndex">
+        <v-carousel-item
+          v-for="(item, i) in plane.gallery"
+          :key="i"
+          :src="item"
+          cover
+        />
+      </v-carousel>
+    </v-dialog>
+    <Teleport to="body">
+      <v-btn
+        v-if="galleryDialog"
+        icon
+        variant="text"
+        style="position: fixed; top: 16px; right: 16px; z-index: 99999; color: white;"
+        @click="galleryDialog = false"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </Teleport>
   </div>
 </template>
 
@@ -240,6 +243,10 @@ function openDialog(index: number) {
   background: #303a46;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .pulse {
   margin: 5px;
   animation: pulse 2s infinite;
@@ -262,5 +269,18 @@ function openDialog(index: number) {
     border-radius: 50%;
     box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
   }
+}
+</style>
+
+<style>
+.plane-gallery-dialog .v-overlay__scrim {
+  opacity: 0.99 !important;
+}
+
+.plane-gallery-dialog .v-carousel__controls .v-btn,
+.plane-gallery-dialog .v-window__controls .v-btn,
+.plane-gallery-dialog .v-carousel .v-btn--icon {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
 }
 </style>
