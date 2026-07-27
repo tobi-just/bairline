@@ -213,15 +213,15 @@
       "type": "file"
     },
     {
-      "path": "assets/scss/main.scss",
-      "accessCount": 6,
-      "lastAccessed": 1785185134711,
+      "path": "package.json",
+      "accessCount": 7,
+      "lastAccessed": 1785188681127,
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "assets/scss/main.scss",
       "accessCount": 6,
-      "lastAccessed": 1785187800067,
+      "lastAccessed": 1785185134711,
       "type": "file"
     },
     {
