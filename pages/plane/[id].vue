@@ -3,7 +3,7 @@
     <v-parallax
       :src="plane.coverImage"
       height="600"
-      class="text-center"
+      class="text-center parallax-centered"
     >
       <v-row align="center" justify="center" class="fill-height">
         <v-col cols="2" class="align-self-start mt-16 text-left">
@@ -239,6 +239,11 @@ function openDialog(index: number) {
 </script>
 
 <style lang="scss" scoped>
+.parallax-centered :deep(.v-parallax__image) {
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
 .gallery-section {
   background: #303a46;
 }

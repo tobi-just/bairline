@@ -10,7 +10,15 @@
         <v-btn variant="text" to="/contact">Contact</v-btn>
       </v-col>
       <v-col cols="12">
-        <v-btn variant="text" class="text-caption">Privacy Policy</v-btn>
+        <v-btn
+          variant="text"
+          href="/downloads/Menu List.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-caption"
+        >
+          Catering
+        </v-btn>
         <v-btn
           variant="text"
           href="/downloads/T&Cs Bairline Fluggesellschaft GmbH.pdf"

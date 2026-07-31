@@ -124,7 +124,7 @@ const planes: Record<string, PlaneData> = {
       manufactured: 'Manufactured 2012',
       speed: 'Cruise Speed: Mach 0.72 / 764 kph',
     },
-    factSheet: '/downloads/Fact sheet OEFUX.pdf',
+    factSheet: '',
     gallery: [
       '/images/web/CJ2+/SL8_9016-Bearbeitet.jpg',
       '/images/web/CJ2+/SL8_9022-Bearbeitet.jpg',
@@ -146,13 +146,7 @@ const planes: Record<string, PlaneData> = {
       '/images/web/CJ2+/SL8_9091-Bearbeitet.jpg',
       '/images/web/CJ2+/SL8_9094-Bearbeitet.jpg',
       '/images/web/CJ2+/SL8_9097-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9100-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9106-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9115-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9121-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9124-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9136-Bearbeitet.jpg',
-      '/images/web/CJ2+/SL8_9142-Bearbeitet.jpg',
+      '/images/web/CJ2+/SL8_9100-Bearbeitet.jpg'
     ],
   },
 }
