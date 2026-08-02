@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-parallax src="/images/window.jpg" style="height: 40vh;">
+    <v-parallax src="/images/web/SLT_0779-Bearbeitet.jpg" style="height: 40vh;">
       <div class="d-flex align-center justify-center fill-height">
-        <h1 class="text-h2 font-weight-light" style="color: #29323c;">Gallery</h1>
+        <h1 class="text-h2 font-weight-light" style="color: white; text-shadow: 1px 2px 8px rgba(0,0,0,0.8);">Gallery</h1>
       </div>
     </v-parallax>
     <v-container class="my-8">

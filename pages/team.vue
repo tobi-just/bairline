@@ -2,7 +2,7 @@
   <div>
     <v-parallax src="/images/team2.jpg" style="height: 40vh;">
       <div class="d-flex align-center justify-center fill-height">
-        <h1 class="text-h2 font-weight-light">Meet the team</h1>
+        <h1 class="text-h2 font-weight-light" style="color: white; text-shadow: 1px 2px 8px rgba(0,0,0,0.8);">Meet the team</h1>
       </div>
     </v-parallax>
     <v-container>
@@ -14,10 +14,10 @@
                 <v-avatar size="100">
                   <v-img :src="person.image" />
                 </v-avatar>
-                <v-card-title class="text-h6" :class="{ 'justify-end': index % 2 }">
+                <v-card-title class="text-h6 person-name" :class="{ 'justify-end': index % 2 }">
                   {{ person.name }}
                 </v-card-title>
-                <v-card-subtitle>{{ person.job }}</v-card-subtitle>
+                <v-card-subtitle class="person-job">{{ person.job }}</v-card-subtitle>
                 <v-card-actions :class="{ 'justify-end': index % 2 }">
                   <v-btn
                     v-if="person.twitter"
@@ -90,3 +90,18 @@ const persons = [
   },
 ]
 </script>
+
+<style scoped>
+.person-name {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+}
+
+.person-job {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  opacity: 1;
+}
+</style>

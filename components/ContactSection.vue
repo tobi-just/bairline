@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-parallax src="/images/window.jpg" style="height: 40vh;">
+    <v-parallax src="/images/business.jpg" style="height: 40vh;">
       <v-container class="fill-height">
         <v-row align="center" class="text-left">
-          <v-col cols="4" offset="2">
+          <v-col cols="10" sm="8" md="5" offset="1" offset-md="2">
             <h1 class="contact-hero-title my-8">Get in Touch</h1>
             <v-btn
               size="x-large"
-              variant="outlined"
-              color="#29323c"
+              variant="flat"
+              color="white"
               @click="scrollToContact"
             >
               Contact us
@@ -19,7 +19,7 @@
     </v-parallax>
     <v-container class="my-16" id="contact">
       <v-row align="center" justify="space-around" class="my-8 text-center">
-        <v-col cols="8" class="d-flex flex-column">
+        <v-col cols="12" md="8" class="d-flex flex-column">
           <h1 class="text-h2 mb-8">Book Your Next Private Jet Charter Today</h1>
           <div class="text-center">
             Whether private leisure, business trip or brokerage of an aircraft,
@@ -93,10 +93,11 @@ function scrollToContact() {
 
 <style lang="scss" scoped>
 .contact-hero-title {
-  font-size: 5rem !important;
-  line-height: 5rem;
+  font-size: clamp(2rem, 8vw, 5rem) !important;
+  line-height: 1.1;
   text-transform: uppercase;
-  color: #29323c;
+  color: white;
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .avatar-col:hover :deep(.v-avatar) {

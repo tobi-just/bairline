@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax src="/images/window.jpg" style="height: 40vh;">
+    <v-parallax src="/images/Gulfstream.jpg" style="height: 40vh;">
       <div class="d-flex align-center justify-center fill-height">
         <h1 class="text-h2 font-weight-light parallax-title">Meet our fleet</h1>
       </div>
@@ -15,41 +15,45 @@
           for any of your demands.
         </v-col>
       </v-row>
-      <v-row justify="space-around" class="my-8">
-        <v-col
-          v-for="plane in planeList"
-          :key="plane.name"
-          cols="12"
-          lg="4"
-        >
-          <v-card
-            class="mx-auto my-12"
-            max-width="800"
-            :to="`/plane/${plane.name}`"
-            color="#1e1e1e"
-            theme="dark"
+      <ClientOnly>
+        <v-row justify="space-around" class="my-8">
+          <v-col
+            v-for="plane in planeList"
+            :key="plane.name"
+            cols="12"
+            lg="4"
+            class="d-flex"
           >
-            <v-img :src="plane.entryImage" cover height="250" />
-            <v-card-title class="text-h5 pt-4 px-6">{{ plane.name }}</v-card-title>
-            <v-card-subtitle class="text-subtitle-1 px-6 pb-2">{{ plane.tagline }}</v-card-subtitle>
-            <v-card-text class="text-justify px-6">{{ plane.content }}</v-card-text>
-            <v-divider class="mx-6" />
-            <v-card-title class="text-h6 px-6">Details</v-card-title>
-            <v-card-text class="px-6">
-              <ul style="list-style: disc; padding-left: 20px; margin-left: 0;">
-                <li>{{ plane.facts.passengers }}</li>
-                <li>{{ plane.facts.luggage }}</li>
-                <li>{{ plane.facts.speed }}</li>
-                <li>{{ plane.facts.range }}</li>
-              </ul>
-            </v-card-text>
-            <v-card-actions class="px-6 pb-4">
-              <v-btn :to="`/plane/${plane.name}`" variant="tonal">Read more</v-btn>
-              <v-btn to="/contact" color="#616161" variant="flat" class="text-white">Plan your trip</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+            <v-card
+              class="mx-auto my-12 d-flex flex-column"
+              style="width: 100%;"
+              max-width="800"
+              :to="`/plane/${plane.name}`"
+              color="#1e1e1e"
+              theme="dark"
+            >
+              <v-img :src="plane.entryImage" cover height="250" min-height="250" max-height="250" />
+              <v-card-title class="text-h5 pt-4 px-6">{{ plane.name }}</v-card-title>
+              <v-card-subtitle class="text-subtitle-1 px-6 pb-2">{{ plane.tagline }}</v-card-subtitle>
+              <v-card-text class="text-justify px-6 flex-grow-1">{{ plane.content }}</v-card-text>
+              <v-divider class="mx-6" />
+              <v-card-title class="text-h6 px-6">Details</v-card-title>
+              <v-card-text class="px-6">
+                <ul style="list-style: disc; padding-left: 20px; margin-left: 0;">
+                  <li>{{ plane.facts.passengers }}</li>
+                  <li>{{ plane.facts.luggage }}</li>
+                  <li>{{ plane.facts.speed }}</li>
+                  <li>{{ plane.facts.range }}</li>
+                </ul>
+              </v-card-text>
+              <v-card-actions class="px-6 pb-4">
+                <v-btn :to="`/plane/${plane.name}`" variant="tonal">Read more</v-btn>
+                <v-btn to="/contact" color="#616161" variant="flat" class="text-white">Plan your trip</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </ClientOnly>
     </v-container>
   </div>
 </template>
@@ -61,7 +65,8 @@ const { planeList } = usePlanes()
 
 <style scoped>
 .parallax-title {
-  color: #29323c;
+  color: white;
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 :deep(.v-card) {

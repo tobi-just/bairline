@@ -49,7 +49,7 @@
           </v-btn>
         </v-col>
       </v-row>
-      <v-row align="center" justify="space-around" class="mx-16 my-8">
+      <v-row align="center" justify="space-around" class="my-8">
         <v-col cols="12" md="4">
           <h2 class="text-h4 text-center">Our Commitment:</h2>
           <p class="py-2">
@@ -58,7 +58,8 @@
             tailored private flight solution.
           </p>
         </v-col>
-        <v-divider vertical />
+        <v-divider class="d-none d-md-flex" vertical />
+        <v-divider class="d-flex d-md-none my-4" />
         <v-col cols="12" md="4">
           <h2 class="text-h4 text-center">Our Services:</h2>
           <div class="py-2">

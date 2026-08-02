@@ -7,14 +7,17 @@
         src="/images/cockpit.jpg"
         cover
       >
+        <div class="mobile-logo">
+          <BairlineLogo />
+        </div>
         <v-row align="end" justify="center" class="fill-height">
-          <v-col class="text-center introduction" cols="10" ref="introRef">
+          <v-col class="text-center introduction" cols="10" ref="introEl">
             <h1 class="text-h2" style="font-weight: 300 !important;">Enjoy the difference</h1>
           </v-col>
           <v-col
             class="text-center clickable"
             cols="12"
-            ref="exploreRef"
+            ref="exploreEl"
             @click="scrollToIntro"
           >
             <h3>Explore</h3>
@@ -32,8 +35,8 @@
 </template>
 
 <script setup lang="ts">
-const introRef = ref<HTMLElement | null>(null)
-const exploreRef = ref<HTMLElement | null>(null)
+const introEl = ref<InstanceType<typeof HTMLElement> | null>(null)
+const exploreEl = ref<InstanceType<typeof HTMLElement> | null>(null)
 
 function scrollToIntro() {
   const start = window.scrollY
@@ -56,14 +59,13 @@ function scrollToIntro() {
 
 function handleScroll() {
   const currentScroll = window.pageYOffset
-  let opacity = 1
-  if (currentScroll <= window.innerHeight) {
-    opacity = 1 - currentScroll / window.innerHeight
-  } else {
-    opacity = 0
-  }
-  if (introRef.value) introRef.value.style.opacity = String(opacity)
-  if (exploreRef.value) exploreRef.value.style.opacity = String(opacity)
+  const opacity = currentScroll <= window.innerHeight
+    ? String(1 - currentScroll / window.innerHeight)
+    : '0'
+  const introDiv = introEl.value?.$el ?? introEl.value
+  const exploreDiv = exploreEl.value?.$el ?? exploreEl.value
+  if (introDiv) introDiv.style.opacity = opacity
+  if (exploreDiv) exploreDiv.style.opacity = opacity
 }
 
 onMounted(() => window.addEventListener('scroll', handleScroll))
@@ -77,5 +79,31 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .introduction {
   transform: translateY(20vh);
+}
+.mobile-logo {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobile-logo {
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 80%;
+    max-width: 480px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .introduction {
+    transform: none;
+  }
+
+  .introduction .text-h2 {
+    font-size: 2.5rem !important;
+  }
 }
 </style>

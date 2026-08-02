@@ -1,9 +1,11 @@
 <template>
   <div>
     <v-app-bar flat color="transparent" :class="{ 'bg-dark': scrolled }" :elevation="0">
-      <NuxtLink to="/" v-if="route.path !== '/'">
-        <BairlineLogo class="header-logo ml-4" />
-      </NuxtLink>
+      <ClientOnly>
+        <NuxtLink to="/" v-if="route.path !== '/'">
+          <BairlineLogo class="header-logo ml-4" />
+        </NuxtLink>
+      </ClientOnly>
       <v-spacer />
       <v-btn variant="text" :ripple="false" to="/offer" :active="route.path === '/offer'">Charter</v-btn>
       <v-menu open-on-hover>
@@ -53,7 +55,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .header-logo {
   width: 280px;
   z-index: 10;
-  animation: 3s appear;
 }
 
 .bg-dark {
@@ -66,11 +67,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   }
 }
 
-@keyframes appear {
-  0% { opacity: 0; }
-  90% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
 .v-btn {
   animation: FadeIn 0.5s linear;

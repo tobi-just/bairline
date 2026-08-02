@@ -61,8 +61,9 @@
 
 <style scoped>
 .bairline-logo-svg {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 90%;
   margin: auto;
+  display: block;
 }
 </style>

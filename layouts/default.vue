@@ -1,19 +1,21 @@
 <template>
   <v-app>
-    <AppHeaderMobile v-if="mobile" />
-    <AppHeader v-else />
+    <ClientOnly>
+      <AppHeaderMobile v-if="mobile" />
+      <AppHeader v-else />
+    </ClientOnly>
 
     <v-main class="pt-0">
       <slot />
     </v-main>
 
     <div
+      v-if="!mobile && mounted"
       ref="logoWrapperEl"
       class="bairline-logo"
       :class="{
         'bairline-logo--home': route.path === '/',
-        'bairline-logo--nav': !mobile && route.path !== '/',
-        'bairline-logo--nav--mobile': mobile && route.path !== '/',
+        'bairline-logo--nav': route.path !== '/',
       }"
     >
       <NuxtLink to="/" aria-label="Bairline">
@@ -31,12 +33,15 @@ import { useDisplay } from 'vuetify'
 const route = useRoute()
 const { mdAndDown: mobile } = useDisplay()
 const logoWrapperEl = ref<HTMLElement | null>(null)
+const mounted = ref(false)
 
 function handleScroll() {
   if (!logoWrapperEl.value || route.path !== '/') return
   const scrollY = Math.max(0, window.scrollY)
   const vh = window.innerHeight
   const progress = Math.min(scrollY / vh, 1)
+
+  if (mobile.value) return
 
   const scaleValue = 1 - progress * 0.55
   const finalMoveUp = progress * vh * 0.3
@@ -50,7 +55,16 @@ function handleScroll() {
   }
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
+watch(() => route.path, (newPath) => {
+  if (!logoWrapperEl.value) return
+  logoWrapperEl.value.style.transform = ''
+  logoWrapperEl.value.style.opacity = ''
+})
+
+onMounted(() => {
+  mounted.value = true
+  window.addEventListener('scroll', handleScroll)
+})
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 useHead({
@@ -66,6 +80,7 @@ useHead({
   position: fixed;
   pointer-events: none;
   z-index: 100;
+  opacity: 0;
 
   &--home {
     top: 40%;
@@ -74,39 +89,14 @@ useHead({
     max-width: 2000px;
     transform: translate(-50%, -50%);
     pointer-events: auto;
+    opacity: 1;
   }
 
-  &--nav {
-    top: 12px;
-    left: 16px;
-    width: 280px;
-    transform: none;
-    pointer-events: auto;
-    z-index: -1;
-    animation: intoBackground 3s;
-  }
-
-  &--nav--mobile {
-    top: 10px;
-    right: 16px;
-    left: auto;
-    width: 20%;
-    transform: none;
-    pointer-events: auto;
-    z-index: -1;
-    animation: intoBackgroundMobile 3s;
-  }
 }
 
 @keyframes intoBackground {
   0% { z-index: 100; }
   99% { z-index: 100; }
   100% { z-index: -1; }
-}
-
-@keyframes intoBackgroundMobile {
-  0% { z-index: 100; }
-  99% { z-index: 100; }
-  100% { opacity: 0; z-index: -1; }
 }
 </style>

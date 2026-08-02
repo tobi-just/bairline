@@ -2,32 +2,36 @@
   <v-container fluid class="footer">
     <v-row dense justify="center" class="text-center mb-4">
       <v-col cols="12" class="mb-4">
-        <v-btn variant="text" to="/">Home</v-btn>
-        <v-btn variant="text" to="/offer">Charter</v-btn>
-        <v-btn variant="text" to="/aircraft">Aircraft</v-btn>
-        <v-btn variant="text" to="/team">Team</v-btn>
-        <v-btn variant="text" to="/gallery">Gallery</v-btn>
-        <v-btn variant="text" to="/contact">Contact</v-btn>
+        <div class="d-flex flex-wrap justify-center">
+          <v-btn variant="text" to="/">Home</v-btn>
+          <v-btn variant="text" to="/offer">Charter</v-btn>
+          <v-btn variant="text" to="/aircraft">Aircraft</v-btn>
+          <v-btn variant="text" to="/team">Team</v-btn>
+          <v-btn variant="text" to="/gallery">Gallery</v-btn>
+          <v-btn variant="text" to="/contact">Contact</v-btn>
+        </div>
       </v-col>
       <v-col cols="12">
-        <v-btn
-          variant="text"
-          href="/downloads/Menu List.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-caption"
-        >
-          Catering
-        </v-btn>
-        <v-btn
-          variant="text"
-          href="/downloads/T&Cs Bairline Fluggesellschaft GmbH.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-caption"
-        >
-          Terms &amp; Conditions
-        </v-btn>
+        <div class="d-flex flex-wrap justify-center">
+          <v-btn
+            variant="text"
+            href="/downloads/Menu List.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-caption"
+          >
+            Catering
+          </v-btn>
+          <v-btn
+            variant="text"
+            href="/downloads/T&Cs Bairline Fluggesellschaft GmbH.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-caption"
+          >
+            Terms &amp; Conditions
+          </v-btn>
+        </div>
       </v-col>
       <v-col cols="8">
         <v-divider />

@@ -13,7 +13,7 @@
     <div class="hero-video__overlay" />
     <v-container class="hero-video__content fill-height">
       <v-row align="center" class="text-left">
-        <v-col cols="4" offset="2">
+        <v-col cols="10" sm="8" md="5" offset="1" offset-md="2">
           <h1 class="hero-title my-8">
             <slot />
           </h1>
@@ -75,8 +75,8 @@ function scrollTo() {
 }
 
 .hero-title {
-  font-size: 5rem !important;
-  line-height: 5rem;
+  font-size: clamp(2rem, 8vw, 5rem) !important;
+  line-height: 1.1;
   text-transform: uppercase;
   text-shadow: 1px 1px black;
 }
