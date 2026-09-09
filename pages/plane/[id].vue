@@ -29,8 +29,8 @@
             {{ prevPlane.name }}
           </v-btn>
         </v-col>
-        <v-col cols="8" class="pb-16 mb-8">
-          <h1 class="text-h1 text-shadow">{{ plane.name }}</h1>
+        <v-col cols="8" class="pb-16">
+          <h1 class="hero-title">{{ plane.name }}</h1>
         </v-col>
         <v-col cols="2" class="align-self-start mt-16 text-right">
           <v-btn
@@ -254,6 +254,7 @@ function openDialog(index: number) {
 .hero {
   position: relative;
   height: clamp(340px, 60vh, 600px);
+  overflow: hidden;
 }
 
 .hero__bg {
@@ -269,6 +270,31 @@ function openDialog(index: number) {
   object-position: var(--cover-position, center center);
 }
 
+/* Frosted backing that dissolves into the photo ("Breath") — no border,
+   the blur fades to nothing well inside its own (over-sized) box. */
+.hero-title {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  color: #fff;
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.15;
+  padding: 0.7em 1.4em;
+}
+
+.hero-title::before {
+  content: "";
+  position: absolute;
+  inset: -1em -2.4em;
+  z-index: -1;
+  background-color: rgba(17, 22, 28, 0.11);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+  mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+}
+
 .gallery-section {
   background: #303a46;
 }
@@ -280,10 +306,6 @@ function openDialog(index: number) {
 .pulse {
   margin: 5px;
   animation: pulse 2s infinite;
-}
-
-.text-shadow {
-  text-shadow: 2px 2px #29323c;
 }
 
 @keyframes pulse {

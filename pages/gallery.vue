@@ -105,6 +105,7 @@ function openDialog(index: number) {
 .hero {
   position: relative;
   height: clamp(240px, 40vh, 420px);
+  overflow: hidden;
 }
 
 .hero__bg {
@@ -116,9 +117,26 @@ function openDialog(index: number) {
   inset: 0;
 }
 
+/* Frosted backing that dissolves into the photo ("Breath") — no border,
+   the blur fades to nothing well inside its own (over-sized) box. */
 .hero-title {
-  color: white;
-  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  color: #fff;
+  padding: 0.7em 1.4em;
+}
+
+.hero-title::before {
+  content: "";
+  position: absolute;
+  inset: -1em -2.4em;
+  z-index: -1;
+  background-color: rgba(17, 22, 28, 0.11);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+  mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
 }
 </style>
 

@@ -1,10 +1,23 @@
 <template>
   <div>
-    <v-parallax src="/images/team2.jpg" scale="0.85" style="height: 40vh;">
-      <div class="d-flex align-center justify-center fill-height">
-        <h1 class="text-h2 font-weight-light" style="color: white; text-shadow: 1px 2px 8px rgba(0,0,0,0.8);">Meet the team</h1>
+    <div class="hero">
+      <v-parallax
+        src="/images/team2.jpg"
+        scale="0.85"
+        height="100%"
+        class="hero__bg d-md-none"
+      />
+      <v-img
+        src="/images/team2.jpg"
+        cover
+        position="center center"
+        height="100%"
+        class="hero__bg d-none d-md-flex"
+      />
+      <div class="hero__content d-flex align-center justify-center">
+        <h1 class="text-h2 font-weight-light hero-title">Meet the team</h1>
       </div>
-    </v-parallax>
+    </div>
     <v-container>
       <v-row justify="space-around" v-for="(person, index) in persons" :key="index">
         <v-col cols="12">
@@ -59,6 +72,43 @@ const persons = [
 </script>
 
 <style scoped>
+.hero {
+  position: relative;
+  height: clamp(240px, 40vh, 420px);
+  overflow: hidden;
+}
+
+.hero__bg {
+  height: 100% !important;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+}
+
+/* Frosted backing that dissolves into the photo ("Breath") — no border,
+   the blur fades to nothing well inside its own (over-sized) box. */
+.hero-title {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  color: #fff;
+  padding: 0.7em 1.4em;
+}
+
+.hero-title::before {
+  content: "";
+  position: absolute;
+  inset: -1em -2.4em;
+  z-index: -1;
+  background-color: rgba(17, 22, 28, 0.11);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+  mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+}
+
 .person-name {
   white-space: normal !important;
   overflow: visible !important;
