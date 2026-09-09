@@ -1,11 +1,23 @@
 <template>
   <div v-if="plane">
-    <v-parallax
-      :src="plane.coverImage"
-      height="600"
-      class="text-center parallax-centered"
+    <div
+      class="hero text-center"
+      :style="{ '--cover-position': plane.coverPosition || 'center center' }"
     >
-      <v-row align="center" justify="center" class="fill-height">
+      <v-parallax
+        :src="plane.coverImage"
+        scale="0.85"
+        height="100%"
+        class="hero__bg hero__bg--parallax d-md-none"
+      />
+      <v-img
+        :src="plane.coverImage"
+        cover
+        :position="plane.coverPosition || 'center center'"
+        height="100%"
+        class="hero__bg d-none d-md-flex"
+      />
+      <v-row align="end" justify="center" no-gutters class="hero__content">
         <v-col cols="2" class="align-self-start mt-16 text-left">
           <v-btn
             size="x-small"
@@ -17,7 +29,7 @@
             {{ prevPlane.name }}
           </v-btn>
         </v-col>
-        <v-col cols="8">
+        <v-col cols="8" class="pb-16 mb-8">
           <h1 class="text-h1 text-shadow">{{ plane.name }}</h1>
         </v-col>
         <v-col cols="2" class="align-self-start mt-16 text-right">
@@ -32,7 +44,7 @@
           </v-btn>
         </v-col>
       </v-row>
-    </v-parallax>
+    </div>
 
     <v-container class="my-16 text-center" id="plane">
       <v-row align="center" justify="center">
@@ -239,9 +251,22 @@ function openDialog(index: number) {
 </script>
 
 <style lang="scss" scoped>
-.parallax-centered :deep(.v-parallax__image) {
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
+.hero {
+  position: relative;
+  height: clamp(340px, 60vh, 600px);
+}
+
+.hero__bg {
+  height: 100% !important;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__bg--parallax :deep(.v-img__img) {
+  object-position: var(--cover-position, center center);
 }
 
 .gallery-section {

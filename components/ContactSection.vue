@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax src="/images/business.jpg" style="height: 40vh;">
+    <v-parallax src="/images/business.jpg" scale="0.85" style="height: 40vh;">
       <v-container class="fill-height">
         <v-row align="center" class="text-left">
           <v-col cols="10" sm="8" md="5" offset="1" offset-md="2">

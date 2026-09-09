@@ -15,12 +15,12 @@
         <div class="d-flex flex-wrap justify-center">
           <v-btn
             variant="text"
-            href="/downloads/Menu List.pdf"
+            href="/downloads/Privacy Policy Bairline.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="text-caption"
           >
-            Catering
+            Privacy Policy
           </v-btn>
           <v-btn
             variant="text"

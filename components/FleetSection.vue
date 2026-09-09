@@ -1,10 +1,30 @@
 <template>
   <div>
-    <v-parallax src="/images/Gulfstream.jpg" style="height: 40vh;">
-      <div class="d-flex align-center justify-center fill-height">
-        <h1 class="text-h2 font-weight-light parallax-title">Meet our fleet</h1>
-      </div>
-    </v-parallax>
+    <div class="hero text-center">
+      <v-parallax
+        src="/images/Gulfstream-left75.jpg"
+        scale="0.85"
+        height="100%"
+        class="hero__bg d-md-none"
+      />
+      <v-img
+        src="/images/Gulfstream-left75.jpg"
+        cover
+        position="center center"
+        height="100%"
+        class="hero__bg d-none d-md-flex"
+      />
+      <v-row
+        align="end"
+        justify="center"
+        no-gutters
+        class="hero__content"
+      >
+        <v-col cols="12" class="pb-12 pb-md-16">
+          <h1 class="text-h2 font-weight-light hero-title">Meet our fleet</h1>
+        </v-col>
+      </v-row>
+    </div>
     <v-container class="my-16">
       <v-row justify="space-around" class="text-center my-8">
         <v-col cols="12" md="6" class="text-justify">
@@ -64,7 +84,21 @@ const { planeList } = usePlanes()
 </script>
 
 <style scoped>
-.parallax-title {
+.hero {
+  position: relative;
+  height: clamp(240px, 40vh, 420px);
+}
+
+.hero__bg {
+  height: 100% !important;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-title {
   color: white;
   text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
 }

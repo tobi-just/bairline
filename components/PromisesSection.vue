@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax src="/images/luxury.jpg" height="400">
+    <v-parallax src="/images/luxury.jpg" scale="0.85" height="400">
       <div class="d-flex align-center justify-center fill-height">
         <h1 class="text-h2 font-weight-light parallax-title">What sets us apart</h1>
       </div>

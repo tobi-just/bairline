@@ -4,6 +4,7 @@ export interface PlaneData {
   content: string
   entryImage: string
   coverImage: string
+  coverPosition?: string
   floorplan: string
   floorplan_night?: string
   tourUrl: string
@@ -28,8 +29,9 @@ const planes: Record<string, PlaneData> = {
     tagline: 'The full package for long-range flights',
     content:
       'Take a flight with our technologically most advanced and luxurious jet. The fastest aircraft in its class combined with plenty of space is your best choice for long distance flights.',
-    entryImage: '/images/plane/gulfstreamG500.jpeg',
-    coverImage: '/images/web/Gulfstream G500/SL7_4804_0-Bearbeitet.jpg',
+    entryImage: '/images/plane/gulfstreamG500_old.jpeg',
+    coverImage: '/images/plane/gulfstreamG500.jpeg',
+    coverPosition: 'center center',
     floorplan: '/images/plane/floorplan_gulfstreamG500_day.png',
     floorplan_night: '/images/plane/floorplan_gulfstreamG500_night.png',
     tourUrl: 'https://jet-pano.net/bairline/lub/',
@@ -79,7 +81,8 @@ const planes: Record<string, PlaneData> = {
     content:
       'You would like to get as fast as possible to your destination? Then this aircraft is definitely the right choice. Flying almost at the speed of sound, the countries below you are changing in no time.',
     entryImage: '/images/plane/citationX.jpg',
-    coverImage: '/images/plane/citationX.jpg',
+    coverImage: '/images/plane/citationX-wide.jpg',
+    coverPosition: 'center center',
     floorplan: '/images/plane/floorplan_citationX.png',
     floorplan_night: '/images/plane/floorplan_citationX_night.png',
     tourUrl: 'https://jetpano.eu/bairline/hub/tour.html',
@@ -109,8 +112,9 @@ const planes: Record<string, PlaneData> = {
     tagline: 'The light jet for medium-haul flights',
     content:
       'This aircraft gives you agility at a highly competitive pricing. Quick turnarounds and good performance can be your partner in the air when choosing special destinations.',
-    entryImage: '/images/web/CJ2+/SL8_9124-Bearbeitet.jpg',
-    coverImage: '/images/web/CJ2+/SL8_9121-Bearbeitet.jpg',
+    entryImage: '/images/plane/citationCJ2.jpg',
+    coverImage: '/images/web/CJ2+/SL8_9121-Bearbeitet-left75.jpg',
+    coverPosition: 'center center',
     floorplan: '/images/plane/floorplan_citationCJ2+.png',
     tourUrl: 'https://jet-pano.net/bairline/fbc/',
     rangeMap: '/images/maps/map-citationCJ2.gif',

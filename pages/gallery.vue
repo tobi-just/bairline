@@ -1,10 +1,23 @@
 <template>
   <div>
-    <v-parallax src="/images/web/SLT_0779-Bearbeitet.jpg" style="height: 40vh;">
-      <div class="d-flex align-center justify-center fill-height">
-        <h1 class="text-h2 font-weight-light" style="color: white; text-shadow: 1px 2px 8px rgba(0,0,0,0.8);">Gallery</h1>
+    <div class="hero">
+      <v-parallax
+        src="/images/web/SLT_0779-Bearbeitet.jpg"
+        scale="0.85"
+        height="100%"
+        class="hero__bg d-md-none"
+      />
+      <v-img
+        src="/images/web/SLT_0779-Bearbeitet.jpg"
+        cover
+        position="center center"
+        height="100%"
+        class="hero__bg d-none d-md-flex"
+      />
+      <div class="hero__content d-flex align-center justify-center">
+        <h1 class="text-h2 font-weight-light hero-title">Gallery</h1>
       </div>
-    </v-parallax>
+    </div>
     <v-container class="my-8">
       <v-row>
         <v-col
@@ -87,6 +100,25 @@ function openDialog(index: number) {
 <style scoped>
 .cursor-pointer {
   cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  height: clamp(240px, 40vh, 420px);
+}
+
+.hero__bg {
+  height: 100% !important;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-title {
+  color: white;
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
 }
 </style>
 
