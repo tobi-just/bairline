@@ -1,22 +1,33 @@
 <template>
   <div>
-    <v-parallax src="/images/business.jpg" scale="0.85" style="height: 40vh;">
-      <v-container class="fill-height">
-        <v-row align="center" class="text-left">
-          <v-col cols="10" sm="8" md="5" offset="1" offset-md="2">
-            <h1 class="contact-hero-title my-8">Get in Touch</h1>
-            <v-btn
-              size="x-large"
-              variant="flat"
-              color="white"
-              @click="scrollToContact"
-            >
-              Contact us
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-parallax>
+    <div class="hero">
+      <v-parallax
+        src="/images/business.jpg"
+        scale="0.85"
+        height="100%"
+        class="hero__bg d-md-none"
+      />
+      <v-img
+        src="/images/business.jpg"
+        cover
+        position="center center"
+        height="100%"
+        class="hero__bg d-none d-md-flex"
+      />
+      <div class="hero__content d-flex flex-column align-center justify-center text-center">
+        <h1 class="text-h2 font-weight-light hero-title">Get in Touch</h1>
+        <v-btn
+          class="mt-8 contact-cta"
+          size="x-large"
+          variant="text"
+          color="white"
+          rounded="pill"
+          @click="scrollToContact"
+        >
+          Contact us
+        </v-btn>
+      </div>
+    </div>
     <v-container class="my-16" id="contact">
       <v-row align="center" justify="space-around" class="my-8 text-center">
         <v-col cols="12" md="8" class="d-flex flex-column">
@@ -92,12 +103,59 @@ function scrollToContact() {
 </script>
 
 <style lang="scss" scoped>
-.contact-hero-title {
-  font-size: clamp(2rem, 8vw, 5rem) !important;
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
+.hero {
+  position: relative;
+  height: clamp(240px, 40vh, 420px);
+  overflow: hidden;
+}
+
+.hero__bg {
+  height: 100% !important;
+}
+
+.hero__content {
+  position: absolute;
+  inset: 0;
+}
+
+/* Frosted backing that dissolves into the photo ("Breath") — no border,
+   the blur fades to nothing well inside its own (over-sized) box. */
+.hero-title {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  color: #fff;
+  padding: 0.7em 1.4em;
+}
+
+.hero-title::before {
+  content: "";
+  position: absolute;
+  inset: -1em -2.4em;
+  z-index: -1;
+  background-color: rgba(17, 22, 28, 0.11);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+  mask: radial-gradient(66% 58% at 50% 50%, #000 0%, rgba(0, 0, 0, 0.45) 26%, transparent 52%);
+}
+
+/* Frosted-dark CTA to match the hero title's glass language. */
+.contact-cta {
+  height: 60px;
+  padding-inline: 2.75rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  background-color: rgba(17, 22, 28, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-cta:hover {
+  background-color: rgba(17, 22, 28, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 .avatar-col:hover :deep(.v-avatar) {
