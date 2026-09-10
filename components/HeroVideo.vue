@@ -3,7 +3,7 @@
     <video
       ref="videoEl"
       class="hero-video__bg"
-      :src="src"
+      :poster="poster"
       autoplay
       muted
       loop
@@ -35,19 +35,26 @@
 <script setup lang="ts">
 const props = defineProps<{
   src: string
+  mobileSrc?: string
+  poster?: string
   scrollTarget?: string
 }>()
 
 const videoEl = ref<HTMLVideoElement | null>(null)
 
-// Ask the browser to start fetching the clip as early as possible.
-useHead({
-  link: [{ rel: 'preload', as: 'video', href: props.src, type: 'video/mp4' }],
-})
-
 onMounted(() => {
   const v = videoEl.value
   if (!v) return
+
+  // On a metered / very slow connection, don't pull the clip at all —
+  // the poster image already fills the hero.
+  const conn = (navigator as any).connection
+  if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) return
+
+  // Small phones get the light-weight encode; everything else the full one.
+  const useMobile = props.mobileSrc && window.matchMedia('(max-width: 767px)').matches
+  v.src = useMobile ? (props.mobileSrc as string) : props.src
+
   v.load()
   const kick = () => { v.play().catch(() => {}) }
   kick()

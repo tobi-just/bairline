@@ -1,6 +1,11 @@
 <template>
   <div>
-    <HeroVideo src="/videos/city.mp4" scroll-target="#services">
+    <HeroVideo
+      src="/videos/city.mp4"
+      mobile-src="/videos/city-mobile.mp4"
+      poster="/images/city-poster.jpg"
+      scroll-target="#services"
+    >
       Private <br />
       Jet <br />
       Charter
