@@ -3,13 +3,14 @@
     <video
       ref="videoEl"
       class="hero-video__bg"
+      :src="src"
       autoplay
       muted
       loop
       playsinline
-    >
-      <source :src="src" type="video/mp4" />
-    </video>
+      preload="auto"
+    />
+
     <div class="hero-video__overlay" />
     <v-container class="hero-video__content fill-height">
       <v-row align="center" class="text-left">
@@ -36,6 +37,22 @@ const props = defineProps<{
   src: string
   scrollTarget?: string
 }>()
+
+const videoEl = ref<HTMLVideoElement | null>(null)
+
+// Ask the browser to start fetching the clip as early as possible.
+useHead({
+  link: [{ rel: 'preload', as: 'video', href: props.src, type: 'video/mp4' }],
+})
+
+onMounted(() => {
+  const v = videoEl.value
+  if (!v) return
+  v.load()
+  const kick = () => { v.play().catch(() => {}) }
+  kick()
+  v.addEventListener('loadeddata', kick, { once: true })
+})
 
 function scrollTo() {
   if (props.scrollTarget) {
