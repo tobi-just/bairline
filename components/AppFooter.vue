@@ -1,25 +1,25 @@
 <template>
   <v-container fluid class="footer">
     <v-row dense justify="center" class="text-center mb-4">
-      <v-col cols="12" class="mb-4">
-        <div class="d-flex flex-wrap justify-center">
-          <v-btn variant="text" to="/">Home</v-btn>
-          <v-btn variant="text" to="/offer">Charter</v-btn>
-          <v-btn variant="text" to="/aircraft">Aircraft</v-btn>
-          <v-btn variant="text" to="/team">Team</v-btn>
-          <v-btn variant="text" to="/gallery">Gallery</v-btn>
-          <v-btn variant="text" to="/contact">Contact</v-btn>
+      <v-col cols="12" class="mb-4 d-flex justify-center">
+        <div class="nav-pill">
+          <v-btn variant="text" :ripple="false" to="/">Home</v-btn>
+          <v-btn variant="text" :ripple="false" to="/offer">Charter</v-btn>
+          <v-btn variant="text" :ripple="false" to="/aircraft">Aircraft</v-btn>
+          <v-btn variant="text" :ripple="false" to="/team">Team</v-btn>
+          <v-btn variant="text" :ripple="false" to="/gallery">Gallery</v-btn>
+          <v-btn variant="text" :ripple="false" to="/contact">Contact</v-btn>
         </div>
       </v-col>
-      <v-col cols="12">
-        <div class="d-flex flex-wrap justify-center">
-          <v-btn variant="text" to="/privacy-policy" class="text-caption">
+      <v-col cols="12" class="d-flex justify-center">
+        <div class="nav-pill">
+          <v-btn variant="text" :ripple="false" to="/privacy-policy" class="text-caption">
             Privacy Policy
           </v-btn>
-          <v-btn variant="text" to="/terms" class="text-caption">
+          <v-btn variant="text" :ripple="false" to="/terms" class="text-caption">
             Terms &amp; Conditions
           </v-btn>
-          <v-btn variant="text" to="/impressum" class="text-caption">
+          <v-btn variant="text" :ripple="false" to="/impressum" class="text-caption">
             Imprint
           </v-btn>
         </div>
@@ -42,5 +42,23 @@
 <style lang="scss" scoped>
 .footer {
   background-color: #29323c;
+}
+
+// Same pill-shaped buttons as the header's nav island — no glass
+// background/border here, just the rounded buttons and active highlight.
+.nav-pill {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+
+  .v-btn {
+    border-radius: 999px;
+  }
+
+  .v-btn--active {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
 }
 </style>
