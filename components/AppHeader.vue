@@ -7,7 +7,7 @@
         </NuxtLink>
       </ClientOnly>
       <v-spacer />
-      <div class="nav-menu" :class="{ 'nav-menu--scrolled': scrolled, 'nav-menu--plain': isHome }">
+      <div class="nav-menu" :class="{ 'nav-menu--scrolled': scrolled }">
         <v-btn variant="text" :ripple="false" to="/offer" :active="route.path === '/offer'">Charter</v-btn>
         <v-menu open-on-hover>
           <template #activator="{ props }">
@@ -43,7 +43,6 @@
 const route = useRoute()
 const { planeList } = usePlanes()
 
-const isHome = computed(() => route.path === '/')
 const scrolled = ref(false)
 
 function onScroll() {
@@ -94,24 +93,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   border-color: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-}
-
-// Home / entry page keeps the original plain header — no glass island.
-.nav-menu--plain {
-  padding: 0;
-  gap: 0;
-  background-color: transparent;
-  border-color: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-
-  .v-btn {
-    border-radius: 4px;
-  }
-
-  .v-btn--active {
-    background-color: transparent;
-  }
 }
 
 .mail-btn {

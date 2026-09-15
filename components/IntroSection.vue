@@ -19,7 +19,15 @@
             <v-expansion-panel bg-color="transparent">
               <v-expansion-panel-title hide-actions class="text-center">
                 <div class="w-100 text-center">
-                  <v-btn size="large">{{ panel === 0 ? 'Close' : 'Read more' }}</v-btn>
+                  <v-btn
+                    size="large"
+                    color="white"
+                    variant="text"
+                    rounded="pill"
+                    class="intro-cta"
+                  >
+                    {{ panel === 0 ? 'Close' : 'Read more' }}
+                  </v-btn>
                 </div>
               </v-expansion-panel-title>
               <v-expansion-panel-text class="text-justify">
@@ -74,5 +82,28 @@ const panel = ref<number | undefined>(undefined)
 .divider {
   width: 50%;
   margin: auto;
+}
+
+/* The expansion-panel title shows its own hover-tint overlay behind the
+   button — drop that so only the button itself shows hover feedback. */
+:deep(.v-expansion-panel-title:hover > .v-expansion-panel-title__overlay),
+:deep(.v-expansion-panel-title:focus > .v-expansion-panel-title__overlay) {
+  opacity: 0 !important;
+}
+
+/* Frosted-glass CTA to match the Contact/Offer/Hero pill buttons. */
+.intro-cta {
+  padding-inline: 2rem;
+  letter-spacing: 0.1em;
+  background-color: rgba(17, 22, 28, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.intro-cta:hover {
+  background-color: rgba(17, 22, 28, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.45);
 }
 </style>

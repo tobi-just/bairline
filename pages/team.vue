@@ -21,7 +21,7 @@
     <v-container>
       <v-row justify="space-around" v-for="(person, index) in persons" :key="index">
         <v-col cols="12">
-          <v-card class="mx-auto" color="#29323c" max-width="800">
+          <v-card class="mx-auto" color="#29323c" max-width="800" rounded="lg">
             <div class="d-flex flex-no-wrap justify-space-between" :class="{ 'flex-row-reverse': index % 2 }">
               <v-col cols="4" :class="{ 'text-right': index % 2 }">
                 <v-avatar size="100">

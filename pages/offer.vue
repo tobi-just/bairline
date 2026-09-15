@@ -63,9 +63,10 @@
           <v-btn
             size="x-large"
             color="white"
-            variant="flat"
+            variant="text"
+            rounded="pill"
             to="/contact"
-            class="px-8"
+            class="offer-cta"
           >
             Plan your trip
           </v-btn>
@@ -116,6 +117,24 @@ useHead({ title: 'Charter' })
 </script>
 
 <style scoped>
+/* Frosted-glass CTA to match the Contact page's "Contact us" button. */
+.offer-cta {
+  height: 60px;
+  padding-inline: 2.75rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  background-color: rgba(17, 22, 28, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.offer-cta:hover {
+  background-color: rgba(17, 22, 28, 0.44) !important;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
 .service-list {
   list-style: none;
   margin: 0 auto;

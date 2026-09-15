@@ -102,12 +102,15 @@
 
       <v-row align="center" justify="center">
         <v-col cols="12" md="9" v-if="plane.floorplan">
-          <Transition name="fade" mode="out-in">
+          <div class="floorplan-crossfade">
+            <v-img :src="plane.floorplan" class="rounded-lg" />
             <v-img
-              :key="dayNight ? 'day' : 'night'"
-              :src="dayNight ? plane.floorplan : (plane.floorplan_night || plane.floorplan)"
+              v-if="plane.floorplan_night"
+              :src="plane.floorplan_night"
+              class="rounded-lg floorplan-crossfade__night"
+              :style="{ opacity: dayNight ? 0 : 1 }"
             />
-          </Transition>
+          </div>
           <div class="d-flex justify-center align-center" v-if="plane.floorplan_night">
             <v-icon :color="dayNight ? '#aaa' : ''">mdi-power-sleep</v-icon>
             <v-switch
@@ -147,7 +150,7 @@
           <v-divider class="ma-4" />
         </v-col>
         <v-col cols="10" md="6">
-          <v-img :src="plane.rangeMap" />
+          <v-img :src="plane.rangeMap" class="rounded-lg" />
         </v-col>
       </v-row>
 
@@ -251,6 +254,19 @@ function openDialog(index: number) {
 </script>
 
 <style lang="scss" scoped>
+// Day image stays in normal flow (defines the box's height); the night
+// image sits on top and crossfades via opacity — the day image is never
+// hidden, it's always fully there underneath as the night image fades in/out.
+.floorplan-crossfade {
+  position: relative;
+}
+
+.floorplan-crossfade__night {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+}
+
 .hero {
   position: relative;
   height: clamp(340px, 60vh, 600px);

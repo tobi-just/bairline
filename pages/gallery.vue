@@ -32,7 +32,7 @@
             :src="image"
             height="250"
             cover
-            class="rounded cursor-pointer"
+            class="rounded-lg cursor-pointer"
             @click="openDialog(i)"
           />
         </v-col>

@@ -13,23 +13,14 @@
       </v-col>
       <v-col cols="12">
         <div class="d-flex flex-wrap justify-center">
-          <v-btn
-            variant="text"
-            href="/downloads/Privacy Policy Bairline.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-caption"
-          >
+          <v-btn variant="text" to="/privacy-policy" class="text-caption">
             Privacy Policy
           </v-btn>
-          <v-btn
-            variant="text"
-            href="/downloads/T&Cs Bairline Fluggesellschaft GmbH.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-caption"
-          >
+          <v-btn variant="text" to="/terms" class="text-caption">
             Terms &amp; Conditions
+          </v-btn>
+          <v-btn variant="text" to="/impressum" class="text-caption">
+            Imprint
           </v-btn>
         </div>
       </v-col>
@@ -39,9 +30,8 @@
       <v-col cols="12" class="text-body-2">
         All Rights Reserved &copy; Bairline Fluggesellschaft mbH &amp; Co. KG,
         Innsbrucker Bundesstra&szlig;e 107, 5020 Salzburg, AT,
-        <a href="tel:+49 (0)30 8631 8972" class="text-decoration-none text-white">
-          +49 (0)30 8631 8972
-        </a>
+        <a href="tel:+49 (0)30 8631 8972" class="text-decoration-none text-white">+49 (0)30 8631 8972</a>,
+        <a href="mailto:sales@bairline.at" class="text-decoration-none text-white">sales@bairline.at</a>
         <br />
         Website by Tobias Just
       </v-col>
