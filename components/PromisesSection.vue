@@ -33,7 +33,7 @@
                 <p class="text-justify card-text-color">{{ promise.content }}</p>
               </v-card-text>
               <v-card-actions v-if="promise.link" class="px-4">
-                <v-btn :to="promise.linkInternal ? promise.link : undefined" :href="!promise.linkInternal ? promise.link : undefined" :target="!promise.linkInternal ? '_blank' : undefined" variant="tonal">Read more</v-btn>
+                <v-btn :to="promise.linkInternal ? promise.link : undefined" :href="!promise.linkInternal ? promise.link : undefined" :target="!promise.linkInternal ? '_blank' : undefined" variant="tonal" rounded="pill" class="px-4">Read more</v-btn>
               </v-card-actions>
             </v-card>
           </template>
@@ -61,7 +61,7 @@
                       <p class="text-justify card-text-color">{{ promise.content }}</p>
                     </v-card-text>
                     <v-card-actions v-if="promise.link" class="px-4">
-                      <v-btn :to="promise.linkInternal ? promise.link : undefined" :href="!promise.linkInternal ? promise.link : undefined" :target="!promise.linkInternal ? '_blank' : undefined" variant="tonal">Read more</v-btn>
+                      <v-btn :to="promise.linkInternal ? promise.link : undefined" :href="!promise.linkInternal ? promise.link : undefined" :target="!promise.linkInternal ? '_blank' : undefined" variant="tonal" rounded="pill" class="px-4">Read more</v-btn>
                     </v-card-actions>
                   </v-card>
                 </v-expand-transition>

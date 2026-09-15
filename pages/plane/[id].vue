@@ -161,6 +161,7 @@
           <v-btn
             v-if="plane.factSheet"
             variant="text"
+            rounded="pill"
             :href="plane.factSheet"
             target="_blank"
             rel="noopener noreferrer"
@@ -169,6 +170,7 @@
           </v-btn>
           <v-btn
             variant="text"
+            rounded="pill"
             href="/downloads/Menu List.pdf"
             target="_blank"
             rel="noopener noreferrer"

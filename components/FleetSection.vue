@@ -60,8 +60,8 @@
                 </ul>
               </v-card-text>
               <v-card-actions class="px-6 pb-4">
-                <v-btn :to="`/plane/${plane.name}`" variant="tonal">Read more</v-btn>
-                <v-btn to="/contact" color="#616161" variant="flat" class="text-white">Plan your trip</v-btn>
+                <v-btn :to="`/plane/${plane.name}`" variant="tonal" rounded="pill" class="px-4">Read more</v-btn>
+                <v-btn to="/contact" color="#616161" variant="flat" rounded="pill" class="text-white px-4">Plan your trip</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
