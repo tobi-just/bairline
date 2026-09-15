@@ -84,9 +84,10 @@
               <v-divider />
               <v-card-actions>
                 <v-spacer />
-                <v-btn @click="externalLink = false">Cancel</v-btn>
+                <v-btn rounded="pill" @click="externalLink = false">Cancel</v-btn>
                 <v-btn
                   color="grey-lighten-1"
+                  rounded="pill"
                   :href="plane.tourUrl"
                   target="_blank"
                   rel="noopener noreferrer"
